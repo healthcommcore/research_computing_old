@@ -1,0 +1,186 @@
+<?php
+
+//define('YES_EMAIL', 'YEShealth@dpcma.org, dave_rothfarb@dfci.harvard.edu');
+/**
+ * Implementation of hook_permission().
+ */
+function rc_contactform_permission() {
+  return array(
+    'access research computing contact form' => array(
+      'title' => t('Access Research Computing feedback form'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu()
+ */
+function rc_contactform_menu () {
+  $items = array();
+  $items['contact/contact-form'] = array(
+    'title' => 'Contact Research Computing',
+    'description' => 'Research Computing contact form',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('rc_contactform_form'),
+    'access arguments' => array('access research computing contact form'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function rc_contactform_theme() {
+  return array(
+    'rc_contactform_form' => array(
+      'arguments' => array('form' => NULL),
+      'template' => 'templates/rc_contactform_form',
+      'render element' => 'form'
+    )
+  );
+}
+
+/**
+ * Implements hook_form()
+ */
+function rc_contactform_form($form, &$form_state) {
+  $form['first_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('First name'),
+    '#size' => 50
+    //'#required' => TRUE
+  );
+
+  $form['last_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Last name'),
+    '#size' => 50
+  );
+
+  $form['partners_username'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Partners username'),
+    '#size' => 15
+  );
+
+  $form['dfci_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DFCI employee ID number'),
+    '#size' => 10
+  );
+
+  $form['dfci_dept'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DFCI department'),
+    '#size' => 40
+  );
+
+  $form['dfci_email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('DFCI email'),
+    '#size' => 50
+  );
+
+  $form['phone'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Phone'),
+    '#size' => 15
+  );
+
+  $form['location'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Location'),
+    '#size' => 35
+  );
+
+  $form['request_type'] = array(
+    '#type' => 'select',
+    '#title' => t('Type of request'),
+    '#options' => drupal_map_assoc(array(
+      'Report an issue',
+      'Request',
+      'Question about services'
+    ))
+  );
+
+  $form['impact'] = array(
+    '#type' => 'select',
+    '#title' => t('Impact'),
+    '#options' => drupal_map_assoc(array(
+      'Individual',
+      'Lab or facility',
+      'Departmental',
+      'Organizational'
+    ))
+  );
+
+  $form['service_category'] = array(
+    '#type' => 'select',
+    '#title' => t('Relevant Research Computing service category'),
+    '#options' => drupal_map_assoc(array(
+      'User services',
+      'Networking',
+      'Software applications',
+      'Computational resources',
+      'Storage',
+      'System development and design',
+      'Other request'
+    ))
+  );
+
+  $form['request_description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Brief description of request')
+  );
+
+  $form['upload'] = array(
+    //'#name' => 'files[' . implode('_', $element['#parents']) . ']',
+    '#type' => 'file',
+    '#theme_wrappers' => array(),
+    '#title' => t('Attach a file')
+  );
+
+  $form['buttons']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit')
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_submit()
+ */
+function rc_contactform_form_submit($form, &$form_state) {
+  $to = YES_EMAIL;
+  $from = YES_EMAIL;
+  $subject = 'Care feedback from YES Health website';
+  $email = "You have received a message from a YES Health web participant. Here are the details:\n\n"; 
+  $email .= "Provider name: " . $form_state['values']['provider_name'] . "\n";
+  $email .= "Provider practice: " . $form_state['values']['provider_practice'] . "\n";
+  $email .= "Feedback: " . $form_state['values']['feedback_box'];
+
+  $mssg = array(
+    'id' => '',
+    'to' => $to,
+    'subject' => $subject,
+    'body' => array($email),
+    'headers' => array(
+      'From' => $from,
+      'Sender' => $from,
+      'Return-Path' => $from
+    )
+  );
+
+  $system = drupal_mail_system('', '');
+  $mssg = $system->format($mssg);
+
+  if ($system->mail($mssg) ) {
+    drupal_set_message('Thank you for your feedback, your message was sent successfully!', 'status');
+  }
+  else {
+    drupal_set_message('A problem was encountered and your message could not be sent', 'error');
+  }
+}

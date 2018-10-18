@@ -1,0 +1,11 @@
+# Ignore configuration files that may contain sensitive information.
+.*.swp
+sites/*/settings*.php
+node_modules
+.sass-cache
+bootstrap_sass
+.DS_Store
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private

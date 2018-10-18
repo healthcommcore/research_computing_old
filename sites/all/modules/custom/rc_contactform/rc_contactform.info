@@ -1,0 +1,5 @@
+;$Id$
+name = Research Computing contact form
+package = custom
+description = A custom form with extra fields developed for Research Computing to help route help requests to the appropriate email url
+core = 7.x
