@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>phsform</title>
+<script language="javascript" type="text/javascript" src="newuser.js"></script>
+
+  </head><body bgcolor="#CCEEFF">
+ <img src="rcbanner.png" width="300" height="">   
+<div align="center">
+  <h2>Research Computing New User Request Form</h2>
+  <h2>
+  </h2>
+</div>
+<div align="center">
+<font color="green">If you are a BCB user, please email kraken@jimmy.harvard.edu for a kraken cluster account.</font><p>
+
+  <font color="#cc0000">All fields are required.  Missing fields would result in a delay or would result in a <b>REJECTION</b> in your application.<br>
+Use 000 for DFCI Employee ID for person that is not part of DFCI.   Use 000 for PHS Account Name for person that is not part of Partners.  <br><br>
+  </font></div>
+<form name="rform" method="post" enctype="multipart/form-data" action="newuserrequest.php" onsubmit="javascript:return validate();">
+<input name="category" value="Compute Cluster" type="hidden">
+<input name="to" value="help@rckace.dfci.harvard.edu,annie@jimmy.harvard.edu" type="hidden">
+<input name="email" value="annie@jimmy.harvard.edu" type="hidden">
+<table width="70%" border="0" cellpadding="2" cellspacing="0">
+
+      <tbody>
+        <tr>
+          <td valign="top">First Name:</td>
+          <td valign="top"><input name="fname" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top">Last Name:</td>
+ 	  <td valign="top"><input name="lname" input="" maxlength="50" size="30" type="text"></td>
+        </tr>
+        <tr>
+          <td valign="top">PHS(Partners) Account Name <br>
+(trd3, te333, etc.):</td>
+ 	  <td valign="top"><input name="phsname" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top">DFCI Employee ID(24457, 35567, etc.):</td>
+ 	  <td valign="top"><input name="eid" input="" maxlength="50" size="30" type="text"></td>
+        </tr>
+         <tr>
+           <td valign="top">Office Location</td>
+           <td valign="top"><input name="location" input="" maxlength="50" size="30" type="text"></td>
+           <td valign="top">Phone:</td>
+           <td valign="top"><input name="phone" input="" maxlength="50" size="30" type="text"></td>
+         </tr>
+        <tr>
+          <td valign="top">Business Email<br>
+(no gmail, yahoo, etc.):</td>
+ 	  <td valign="top"><input name="cc" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top"> </td>
+ 	  <td valign="top"></td>
+        </tr>
+</tbody>
+</table>
+<p>&nbsp;<p>
+<table width="40%" border="0" cellpadding="2" cellspacing="0">
+<tr>
+<td>
+DFCI PI Sponser's Full Name: </td><td><input name="sponser" input="" maxlength="50" size="30" type="text"></td><td></td></tr><tr> 
+<td>DFCI Grant Number you are under(You must be under this grant number and this must be a DFCI grant):</td><td> <input name="grantnum" input="" maxlength="50" size="30" type="number"> </td></tr><tr><td>
+DFCI Grant End Date(11/30/2017):</td><td> <input name="grantenddate" input="" maxlength="50" size="30" type="date"></td></tr><tr><td>
+Total people under this grant that need access to this system: </td><td><input name="grantpeople" input="" maxlength="3" size="5" type="number"></td></tr>
+
+</table>
+
+
+    
+
+  <br>
+  <br>
+Lab or Facility Membership 
+  <select name="group1">
+  <option value="bcb">bcb</option> 
+<option value="belfer">belfer</option>
+<option value="cb">cb</option>
+ <option value="cccb">cccb</option>
+  <option value="ccgd">ccgd</option>
+  <option value="cfce">cfce</option>
+  <option value="clcdb">clcdb</option>
+ <option value="macf">macf</option>
+ <option value="mbcf">mbcf</option>
+ <option value="pedonc">pedonc</option>
+ <option value="others">OTHERS</option>
+  </select>
+  <br>
+Lab or Facility Membership (Please specify if you've selected OTHERS)
+<input name="group2" input="" maxlength="50" size="30" type="text">
+<br>
+      <br>
+<br>
+
+<input name="issuebrief" value="New User Request" type="hidden">
+<input name="impact" value="Individual" type="hidden">
+      System Name*:  
+<select name="cluster">
+<option value="rcsgc">rcsgc</option>
+<option value="rcapps2">rcapps2</option>
+<option value="rcgpu">rcgpu</option>
+<option value="rcprofile">rcprofile(for ccgd group only)</option>
+</select>
+<br>*Rcsgc is the cluster, rcapps2 is a linux server and rchpc and rcprofile are only available to the ccgd group
+      <br>
+  <br>
+<br>
+Description of Project Scope:<br>
+&nbsp;<textarea rows="7" cols="100" name="project"></textarea>
+      <br>
+Description of Compute Need:<br>
+&nbsp;<textarea rows="7" cols="100" name="compute"></textarea>
+      <br>
+Description of Storage Need and Size:<br>
+&nbsp;<textarea rows="7" cols="100" name="storage"></textarea>
+      <br>
+
+
+<br>
+  <br>
+<center>By clicking on Submit, you agree to using DFCI resources for DFCI project work only. </center><br>
+
+<center><input name="Submit" type="submit" value="Submit"></center>
+    </form>
+</body></html>
