@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+    
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>phsform</title>
+<script language="javascript" type="text/javascript" src="form.js"></script>
+
+  </head><body bgcolor="#CCFFCC">
+ <img src="rcbanner.png" width="300" height="">   
+<div align="center">
+  <h2>Research Computing HPC Case Submission Form </h2>
+  <h2>
+  </h2>
+</div>
+<div align="center">
+<font color=blue>
+<b>To request a new account, please click <a href="newuserrequest.html">HERE</a>.   &nbsp; User account requests submitted with this form will be rejected. </b><p>
+  </font>
+<b>
+  <font color="#980000">You would need to submit a separate form for EACH system request. &nbsp;  We no longer accept the same request for multiple systems on one form.  <p> ALL fields are required.<br></font>
+</b>
+
+</div>
+<form name="rform" method="post" enctype="multipart/form-data" action="clusternew.php" onsubmit="javascript:return validate();">
+<!--
+<center>Send test mail to yourself or to support@rckace.dfci.harvard.edu:<input name="to" input="" maxlength="50" size="30" type="text"><br>
+</center><br>
+-->
+<input name="category" value="Compute Cluster" type="hidden">
+<input name="to" value="help@rckace.dfci.harvard.edu,hzhang@mail.dfci.harvard.edu" type="hidden">
+<input name="email" value="hzhang@mail.dfci.harvard.edu" type="hidden">
+<table width="70%" border="0" cellpadding="2" cellspacing="0">
+
+      <tbody>
+        <tr>
+          <td valign="top">First Name:</td>
+          <td valign="top"><input name="fname" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top">Last Name:</td>
+ 	  <td valign="top"><input name="lname" input="" maxlength="50" size="30" type="text"></td>
+        </tr>
+        <tr>
+          <td valign="top">PHS(Partners) Account Name <br>
+(trd3, te333, etc.):</td>
+ 	  <td valign="top"><input name="phsname" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top">DFCI Employee ID(24457, 35567, etc.):</td>
+ 	  <td valign="top"><input name="eid" input="" maxlength="50" size="30" type="text"></td>
+        </tr>
+
+        <tr>
+          <td valign="top">Office Location</td>
+          <td valign="top"><input name="location" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top">Phone:</td>
+          <td valign="top"><input name="phone" input="" maxlength="50" size="30" type="text"></td>
+        </tr>
+
+        <tr>
+          <td valign="top">Business Email*<br>
+(no gmail, yahoo, etc.):</td>
+ 	  <td valign="top"><input name="cc" input="" maxlength="50" size="30" type="text"></td>
+          <td valign="top"> </td>
+ 	  <td valign="top"></td>
+        </tr>
+        
+      </tbody>
+    
+</table>
+* Using a Partners email address allows one to reply back to our ticket system. <p>
+
+
+    
+
+  <br>
+  <br>
+Lab or Facility Membership 
+  <select name="group1">
+  <option value="bcb">bcb</option> 
+<option value="belfer">belfer</option>
+<option value="cb">cb</option>
+ <option value="cccb">cccb</option>
+  <option value="ccgd">ccgd</option>
+  <option value="cfce">cfce</option>
+  <option value="clcdb">clcdb</option>
+ <option value="macf">macf</option>
+ <option value="mbcf">mbcf</option>
+ <option value="pedonc">pedonc</option>
+ <option value="others">OTHERS</option>
+  </select>
+  <br>
+Lab or Facility Membership (Please specify if you've selected OTHERS)
+<input name="group2" input="" maxlength="50" size="30" type="text">
+<br>
+      <br>
+<br>
+      Brief Description of the issue (50 characters)<input name="issuebrief" input="" maxlength="50" size="50" type="text"><br>
+Impact: 
+  <select name="impact">
+  <option value="Individual">Individual</option>
+<option value="Lab or Facility">Lab or Facility</option>
+<option value="Departmental">Departmental</option>
+<option value="Organizational">Organizational</option>
+</select>
+      System Name:  
+<select name="cluster">
+<option selected disabled hidden value=''></option>
+<option value="ccgd">ccgd</option>
+<option value="ccgd-build">ccgd-build</option>
+<option value="isilon">isilon</option>
+<option value="mbcf-s1">mbcf-s1</option>
+<option value="rcapps">rcapps</option>
+<option value="rcapps2">rcapps2</option>
+<option value="rchpc">rchpc cluster</option>
+<option value="rcprofile">rcprofile</option>
+<option value="rcgpu">rcgpu</option>
+<option value="rcsgc">rcsgc cluster</option>
+</select>
+      <br>
+  <br>
+Description** of the issue or request:<br>
+<font color="red">** Each new software request must include an explanation as to why the software needs to be on the requested system and must include a description as what the user is using the software for.<br> </font>
+&nbsp;<textarea rows="7" cols="100" name="issue"></textarea>
+      <br>
+<br>
+      Attach a file(<3MB):<input type="file" name="fileattach">
+  <br>
+
+<center><input name="Submit" type="submit" value="Submit"></center>
+    </form>
+</body></html>
