@@ -9,6 +9,6 @@
   "devDependencies": {
     "grunt-contrib-compass": "v1.0.1",
     "grunt-contrib-sass": "v0.9.2",
-    "grunt-contrib-watch": "v0.6.1"
+    "grunt-contrib-watch": "v1.1.0"
   }
 }
